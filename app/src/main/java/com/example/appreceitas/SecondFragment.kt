@@ -1,5 +1,7 @@
 package com.example.appreceitas
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -31,8 +33,10 @@ class SecondFragment : Fragment(R.layout.fragment_second) {
                 preparationMode.setError("Este campo não pode ficar vazio.")
                 !button3.isEnabled
             } else {
+                FakeDB.addRecipe(Model(name.text.toString(), ingredients.text.toString(), preparationMode.text.toString()))
                 findNavController().navigate(R.id.action_secondFragment_to_firstFragment)
             }
         }
     }
+
 }

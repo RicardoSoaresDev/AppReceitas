@@ -8,7 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.Adapter
 
-class AdapterRecyclerView(private val recipes: List<Model>, private val context: Context?) : Adapter<AdapterRecyclerView.ViewHolder>() {
+class AdapterRecyclerView(private val recipes: MutableList<Model>, private val context: Context?) : Adapter<AdapterRecyclerView.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.layout_card, parent, false)
@@ -17,10 +17,11 @@ class AdapterRecyclerView(private val recipes: List<Model>, private val context:
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val recipe = recipes[position]
+        holder.bindView(recipe)
 
-        holder.title.text = recipe.title
-        holder.ingredients.text = recipe.ingredients
-        holder.preparationMode.text = recipe.prepMode
+//        holder.title.text = recipe.title
+//        holder.ingredients.text = recipe.ingredients
+//        holder.preparationMode.text = recipe.prepMode
     }
 
     override fun getItemCount(): Int {
@@ -33,12 +34,12 @@ class AdapterRecyclerView(private val recipes: List<Model>, private val context:
         val ingredients = itemView.findViewById<TextView>(R.id.recipeIngredients)
         val preparationMode = itemView.findViewById<TextView>(R.id.recipePrepMode)
 
-//        fun bindView(recipe: Model) {
-//
-//            title.text = note.title
-//            ingredients.text = note.ingredients
-//            preparationMode.text = note.prepMode
-//
-//        }
+        fun bindView(recipe: Model) {
+
+            title.text = recipe.title
+            ingredients.text = recipe.ingredients
+            preparationMode.text = recipe.prepMode
+
+        }
     }
 }
