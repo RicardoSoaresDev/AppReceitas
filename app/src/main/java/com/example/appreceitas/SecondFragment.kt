@@ -1,16 +1,12 @@
 package com.example.appreceitas
 
-import android.content.Context
-import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
-import androidx.fragment.app.findFragment
 import androidx.navigation.fragment.findNavController
+import kotlinx.android.synthetic.main.fragment_second.*
 
 class SecondFragment : Fragment(R.layout.fragment_second) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -32,8 +28,10 @@ class SecondFragment : Fragment(R.layout.fragment_second) {
             } else if (preparationMode.text.toString().isEmpty()) {
                 preparationMode.setError("Este campo não pode ficar vazio.")
                 !button3.isEnabled
+            } else if (radioGroup.checkedRadioButtonId == -1) {
+                !button3.isEnabled
             } else {
-                FakeDB.addRecipe(Model(name.text.toString(), ingredients.text.toString(), preparationMode.text.toString()))
+                FakeDB.addRecipe(Model(name.text.toString(), ingredients.text.toString(), preparationMode.text.toString(), radioGroup.checkedRadioButtonId))
                 findNavController().navigate(R.id.action_secondFragment_to_firstFragment)
             }
         }
