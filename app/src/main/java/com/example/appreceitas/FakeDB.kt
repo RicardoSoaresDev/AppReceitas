@@ -1,9 +1,13 @@
 package com.example.appreceitas
 
 object FakeDB {
-    var dbObject = mutableListOf<Model>()
+    var dbObject = mutableListOf<ModelParent>()
 
-    fun addRecipe(recipe: Model) {
+    fun addRecipe(recipe: ModelParent) {
         dbObject.add(recipe)
+    }
+
+    fun createModel(model: Model) : List<Model> {
+        return listOf(model)
     }
 }

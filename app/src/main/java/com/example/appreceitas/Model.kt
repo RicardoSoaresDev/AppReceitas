@@ -7,4 +7,5 @@ data class Model(
     val title: String,
     val ingredients: String,
     val prepMode: String,
-    val type: Int): Serializable
+//    val type: Int
+    ): Serializable

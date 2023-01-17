@@ -8,9 +8,10 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.parent_layout_card.view.*
 
-class ParentAdapterRecyclerView(var listParent: List<String>,
-                                var listChild: MutableList<Model>,
-                                val context: Context?) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class ParentAdapterRecyclerView(var list: MutableList<ModelParent>,
+//    var listParent: List<String>,
+//    var listChild: MutableList<Model>,
+    val context: Context?) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -22,23 +23,32 @@ class ParentAdapterRecyclerView(var listParent: List<String>,
         when (holder) {
             is ParentViewHolder -> {
 
-                holder.itemView.textViewSection.text = listParent[position]
+                val listType = mapOf(list[position].type to list)
 
-                // initialize child adapter
-                holder.itemView.recyclerViewChild.apply {
-                    if ()
-                    this.adapter = ChildAdapterRecyclerView(listChild, context, onClick = {
-                        val action = ThirdFragmentDirections.actionThirdFragmentToFourthFragment(it)
-                        findNavController().navigate(action)
-                    })
+                for (item in list) {
+                    if (item.type != list[position].type) {
+                        holder.itemView.textViewSection.text = list[position].type
+
+                        // initialize child adapter
+                        holder.itemView.recyclerViewChild.apply {
+                            this.adapter = ChildAdapterRecyclerView(
+                                list[position].recipeInfo,
+                                context, onClick = {
+                                    val action =
+                                        ThirdFragmentDirections.actionThirdFragmentToFourthFragment(
+                                            it
+                                        )
+                                    findNavController().navigate(action)
+                                })
+                        }
+                    }
                 }
-
             }
         }
     }
 
     override fun getItemCount(): Int {
-        return listParent.size
+        return list.size
     }
 
     class ParentViewHolder(itemview: View) : RecyclerView.ViewHolder(itemview)

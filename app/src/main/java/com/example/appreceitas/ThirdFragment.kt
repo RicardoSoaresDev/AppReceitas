@@ -19,13 +19,13 @@ class ThirdFragment : Fragment(R.layout.fragment_third) {
 
     var list = FakeDB.dbObject
 
-    var listSections = mutableListOf<String>("Seção 1", "Seção 2", "Seção 3")
+//    var listSections = mutableListOf("Seção 1", "Seção 2", "Seção 3")
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         // initialize parent adapter
-        idRecyclerView.adapter = ParentAdapterRecyclerView(listSections, list, context)
+        idRecyclerView.adapter = ParentAdapterRecyclerView(list, context)
         idRecyclerView.layoutManager = LinearLayoutManager(context)
 
     }

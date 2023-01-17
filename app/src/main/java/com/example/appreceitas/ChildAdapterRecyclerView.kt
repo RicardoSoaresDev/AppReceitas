@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.layout_card.view.*
 
-class ChildAdapterRecyclerView(private val recipes: MutableList<Model>,
+class ChildAdapterRecyclerView(private val recipes: List<Model>,
                                private val context: Context?,
                                private val onClick: (Model) -> Unit) : RecyclerView.Adapter<ChildAdapterRecyclerView.ViewHolder>() {
 
