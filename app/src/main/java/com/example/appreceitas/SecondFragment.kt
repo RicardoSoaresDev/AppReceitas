@@ -39,9 +39,9 @@ class SecondFragment : Fragment(R.layout.fragment_second) {
                         type = radioButton.text.toString(),
                         recipeInfo = FakeDB.createModel(
                             Model(
-                                name.text.toString(),
-                                ingredients.text.toString(),
-                                preparationMode.text.toString()
+                                title = name.text.toString(),
+                                ingredients = ingredients.text.toString(),
+                                prepMode = preparationMode.text.toString()
                             )
                         )
                     )

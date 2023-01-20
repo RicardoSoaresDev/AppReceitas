@@ -36,7 +36,7 @@ class ParentAdapterRecyclerView(
             modelParent: Pair<String, List<ModelParent>>,
             onClick: (Model) -> Unit
         ) {
-            this.section.text = modelParent.first
+            section.text = modelParent.first
             recyclerView.apply {
                 layoutManager = LinearLayoutManager(itemView.context)
                 adapter = ChildAdapterRecyclerView(modelParent.second, onClick)
