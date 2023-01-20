@@ -1,24 +1,25 @@
 package com.example.appreceitas
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.layout_card.view.*
 
-class ChildAdapterRecyclerView(private val recipes: List<Model>,
-                               private val context: Context?,
+class ChildAdapterRecyclerView(private val recipes: List<ModelParent>,
                                private val onClick: (Model) -> Unit) : RecyclerView.Adapter<ChildAdapterRecyclerView.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(context).inflate(R.layout.layout_card, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.layout_card, parent, false)
         return ViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val recipe = recipes[position]
-        holder.bindView(recipe, onClick)
+        recipe.recipeInfo.forEach {
+            model ->  holder.bindView(model, onClick)
+        }
+//        holder.bindView(recipe, onClick)
 
     }
 

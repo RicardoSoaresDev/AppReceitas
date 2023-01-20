@@ -6,8 +6,6 @@ import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.RadioButton
-import android.widget.RadioGroup
-import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import kotlinx.android.synthetic.main.fragment_second.*
 
@@ -34,9 +32,12 @@ class SecondFragment : Fragment(R.layout.fragment_second) {
             } else if (radioGroup.checkedRadioButtonId == -1) {
                 !button3.isEnabled
             } else {
+                val radioButton = view.findViewById<RadioButton>(radioGroup.checkedRadioButtonId)
+
                 FakeDB.addRecipe(
-                    ModelParent(resources.getResourceEntryName(radioGroup.checkedRadioButtonId),
-                        FakeDB.createModel(
+                    ModelParent(
+                        type = radioButton.text.toString(),
+                        recipeInfo = FakeDB.createModel(
                             Model(
                                 name.text.toString(),
                                 ingredients.text.toString(),
