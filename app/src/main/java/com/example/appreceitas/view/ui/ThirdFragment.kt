@@ -1,4 +1,4 @@
-package com.example.appreceitas
+package com.example.appreceitas.view.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,6 +8,8 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.appreceitas.databinding.FragmentThirdBinding
+import com.example.appreceitas.db.FakeDB
+import com.example.appreceitas.view.adapter.ParentAdapterRecyclerView
 
 
 class ThirdFragment : Fragment() {
@@ -41,13 +43,6 @@ class ThirdFragment : Fragment() {
             })
             layoutManager = LinearLayoutManager(context)
         }
-
-//        binding.idRecyclerView.adapter = ParentAdapterRecyclerView(map, onClick = {
-//            val action = ThirdFragmentDirections.actionThirdFragmentToFourthFragment(it)
-//            findNavController().navigate(action)
-//        })
-//        binding.idRecyclerView.layoutManager = LinearLayoutManager(context)
-
     }
 
     override fun onDestroyView() {

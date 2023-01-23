@@ -1,4 +1,7 @@
-package com.example.appreceitas
+package com.example.appreceitas.db
+
+import com.example.appreceitas.model.Model
+import com.example.appreceitas.model.ModelParent
 
 object FakeDB {
     var dbObject = mutableListOf<ModelParent>()

@@ -1,9 +1,11 @@
-package com.example.appreceitas
+package com.example.appreceitas.view.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.appreceitas.databinding.LayoutCardBinding
+import com.example.appreceitas.model.Model
+import com.example.appreceitas.model.ModelParent
 
 
 class ChildAdapterRecyclerView(private val recipes: List<ModelParent>,

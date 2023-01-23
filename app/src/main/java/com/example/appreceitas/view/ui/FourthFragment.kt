@@ -1,4 +1,4 @@
-package com.example.appreceitas
+package com.example.appreceitas.view.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -19,7 +19,7 @@ class FourthFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentFourthBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -31,9 +31,9 @@ class FourthFragment : Fragment() {
         val ingredients = binding.textViewIngredients
         val mode = binding.textViewMode
 
-        title?.text = args.recipe.title
-        ingredients?.text = args.recipe.ingredients
-        mode?.text = args.recipe.prepMode
+        title.text = args.recipe.title
+        ingredients.text = args.recipe.ingredients
+        mode.text = args.recipe.prepMode
     }
 
     override fun onDestroyView() {

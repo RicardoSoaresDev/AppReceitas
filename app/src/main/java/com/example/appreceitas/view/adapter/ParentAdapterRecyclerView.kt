@@ -1,10 +1,12 @@
-package com.example.appreceitas
+package com.example.appreceitas.view.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.appreceitas.databinding.ParentLayoutCardBinding
+import com.example.appreceitas.model.Model
+import com.example.appreceitas.model.ModelParent
 
 class ParentAdapterRecyclerView(
     var list: List<Pair<String, List<ModelParent>>>,

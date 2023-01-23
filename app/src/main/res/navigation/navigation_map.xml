@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/firstFragment"
-        android:name="com.example.appreceitas.FirstFragment"
+        android:name="com.example.appreceitas.view.ui.FirstFragment"
         android:label="fragment_first"
         tools:layout="@layout/fragment_first" >
         <action
@@ -19,7 +19,7 @@
     </fragment>
     <fragment
         android:id="@+id/secondFragment"
-        android:name="com.example.appreceitas.SecondFragment"
+        android:name="com.example.appreceitas.view.ui.SecondFragment"
         android:label="fragment_second"
         tools:layout="@layout/fragment_second" >
         <action
@@ -28,7 +28,7 @@
     </fragment>
     <fragment
         android:id="@+id/thirdFragment"
-        android:name="com.example.appreceitas.ThirdFragment"
+        android:name="com.example.appreceitas.view.ui.ThirdFragment"
         android:label="fragment_third"
         tools:layout="@layout/fragment_third" >
         <action
@@ -40,7 +40,7 @@
     </fragment>
     <fragment
         android:id="@+id/fourthFragment"
-        android:name="com.example.appreceitas.FourthFragment"
+        android:name="com.example.appreceitas.view.ui.FourthFragment"
         android:label="fragment_fourth"
         tools:layout="@layout/fragment_fourth" >
         <action
@@ -48,6 +48,6 @@
             app:destination="@id/thirdFragment" />
         <argument
             android:name="recipe"
-            app:argType="com.example.appreceitas.Model" />
+            app:argType="com.example.appreceitas.model.Model" />
     </fragment>
 </navigation>

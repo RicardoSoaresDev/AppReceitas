@@ -1,4 +1,4 @@
-package com.example.appreceitas
+package com.example.appreceitas.model
 
 import java.io.Serializable
 
