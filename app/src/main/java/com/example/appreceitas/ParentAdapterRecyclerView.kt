@@ -1,11 +1,10 @@
 package com.example.appreceitas
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.parent_layout_card.view.*
+import com.example.appreceitas.databinding.ParentLayoutCardBinding
 
 class ParentAdapterRecyclerView(
     var list: List<Pair<String, List<ModelParent>>>,
@@ -14,8 +13,8 @@ class ParentAdapterRecyclerView(
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.parent_layout_card, parent, false)
-        return ParentViewHolder(view)
+        val binding = ParentLayoutCardBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return ParentViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
@@ -28,9 +27,10 @@ class ParentAdapterRecyclerView(
         return list.size
     }
 
-    class ParentViewHolder(itemview: View) : RecyclerView.ViewHolder(itemview) {
-        private val section = itemview.textViewSection
-        private val recyclerView = itemView.recyclerViewChild
+    class ParentViewHolder(binding: ParentLayoutCardBinding) : RecyclerView.ViewHolder(binding.root) {
+
+        private val section = binding.textViewSection
+        private val recyclerView = binding.recyclerViewChild
 
         fun bind(
             modelParent: Pair<String, List<ModelParent>>,
@@ -38,7 +38,7 @@ class ParentAdapterRecyclerView(
         ) {
             section.text = modelParent.first
             recyclerView.apply {
-                layoutManager = LinearLayoutManager(itemView.context)
+                layoutManager = LinearLayoutManager(context)
                 adapter = ChildAdapterRecyclerView(modelParent.second, onClick)
             }
         }

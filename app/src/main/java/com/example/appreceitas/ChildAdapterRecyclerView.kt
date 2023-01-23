@@ -1,17 +1,17 @@
 package com.example.appreceitas
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.layout_card.view.*
+import com.example.appreceitas.databinding.LayoutCardBinding
+
 
 class ChildAdapterRecyclerView(private val recipes: List<ModelParent>,
                                private val onClick: (Model) -> Unit) : RecyclerView.Adapter<ChildAdapterRecyclerView.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.layout_card, parent, false)
-        return ViewHolder(view)
+        val binding = LayoutCardBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return ViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -19,8 +19,6 @@ class ChildAdapterRecyclerView(private val recipes: List<ModelParent>,
         recipe.recipeInfo.forEach {
             model ->  holder.bindView(model, onClick)
         }
-//        holder.bindView(recipe, onClick)
-
     }
 
     override fun getItemCount(): Int {
@@ -28,11 +26,11 @@ class ChildAdapterRecyclerView(private val recipes: List<ModelParent>,
     }
 
 
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    class ViewHolder(binding: LayoutCardBinding) : RecyclerView.ViewHolder(binding.root) {
 
-        val title = itemView.recipeTitle
-        val ingredients = itemView.recipeIngredients
-        val preparationMode = itemView.recipePrepMode
+        val title = binding.recipeTitle
+        val ingredients = binding.recipeIngredients
+        val preparationMode = binding.recipePrepMode
 
         fun bindView(recipe: Model, onClick: (Model) -> Unit) {
 
@@ -43,7 +41,6 @@ class ChildAdapterRecyclerView(private val recipes: List<ModelParent>,
             itemView.setOnClickListener {
                 onClick(recipe)
             }
-
         }
     }
 }

@@ -1,22 +1,36 @@
 package com.example.appreceitas
 
 import android.os.Bundle
+import android.view.LayoutInflater
 import androidx.fragment.app.Fragment
 import android.view.View
-import android.widget.Button
-import android.widget.EditText
+import android.view.ViewGroup
 import android.widget.RadioButton
 import androidx.navigation.fragment.findNavController
-import kotlinx.android.synthetic.main.fragment_second.*
+import com.example.appreceitas.databinding.FragmentSecondBinding
 
 class SecondFragment : Fragment(R.layout.fragment_second) {
+
+    private var _binding: FragmentSecondBinding? = null
+    val binding get() = _binding!!
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        _binding = FragmentSecondBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val name = view.findViewById<EditText>(R.id.editTextName)
-        val ingredients = view.findViewById<EditText>(R.id.editTextIngredients)
-        val preparationMode = view.findViewById<EditText>(R.id.editTextMode)
-        val button3 = view.findViewById<Button>(R.id.button3)
+        val name = binding.editTextName
+        val ingredients = binding.editTextIngredients
+        val preparationMode = binding.editTextMode
+        val radioGroup = binding.radioGroup
+        val button3 = binding.button3
 
         button3.setOnClickListener {
 
@@ -49,5 +63,10 @@ class SecondFragment : Fragment(R.layout.fragment_second) {
                 findNavController().navigate(R.id.action_secondFragment_to_firstFragment)
             }
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }
