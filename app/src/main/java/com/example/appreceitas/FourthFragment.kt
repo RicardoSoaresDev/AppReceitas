@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.navArgs
 import com.example.appreceitas.databinding.FragmentFourthBinding
 
-class FourthFragment : Fragment(R.layout.fragment_fourth) {
+class FourthFragment : Fragment() {
 
     private val args: FourthFragmentArgs by navArgs()
 

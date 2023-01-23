@@ -9,7 +9,7 @@ import android.widget.RadioButton
 import androidx.navigation.fragment.findNavController
 import com.example.appreceitas.databinding.FragmentSecondBinding
 
-class SecondFragment : Fragment(R.layout.fragment_second) {
+class SecondFragment : Fragment() {
 
     private var _binding: FragmentSecondBinding? = null
     val binding get() = _binding!!

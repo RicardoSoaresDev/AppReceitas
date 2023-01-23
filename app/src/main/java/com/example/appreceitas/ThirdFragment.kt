@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.appreceitas.databinding.FragmentThirdBinding
 
 
-class ThirdFragment : Fragment(R.layout.fragment_third) {
+class ThirdFragment : Fragment() {
 
     var list = FakeDB.dbObject
 

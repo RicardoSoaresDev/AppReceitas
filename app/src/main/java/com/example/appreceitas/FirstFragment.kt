@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.example.appreceitas.databinding.FragmentFirstBinding
 
-class FirstFragment : Fragment(R.layout.fragment_first) {
+class FirstFragment : Fragment() {
 
     private var _binding: FragmentFirstBinding? = null
     val binding get() = _binding!!
