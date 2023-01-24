@@ -10,7 +10,15 @@ object FakeDB {
         dbObject.add(recipe)
     }
 
-    fun createModel(model: Model) : List<Model> {
+    fun createRecipe(model: Model) : List<Model> {
         return listOf(model)
+    }
+
+    fun updateRecipe(recipe: ModelParent, position: Int) {
+
+    }
+
+    fun deleteRecipe(recipe: ModelParent, position: Int) {
+//        dbObject.remove
     }
 }

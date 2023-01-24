@@ -1,5 +1,6 @@
 package com.example.appreceitas.view.adapter
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -27,18 +28,18 @@ class ChildAdapterRecyclerView(private val recipes: List<ModelParent>,
         return recipes.size
     }
 
-
     class ViewHolder(binding: LayoutCardBinding) : RecyclerView.ViewHolder(binding.root) {
 
         val title = binding.recipeTitle
         val ingredients = binding.recipeIngredients
         val preparationMode = binding.recipePrepMode
 
+        @SuppressLint("SetTextI18n")
         fun bindView(recipe: Model, onClick: (Model) -> Unit) {
 
             title.text = recipe.title
-            ingredients.text = recipe.ingredients
-            preparationMode.text = recipe.prepMode
+            ingredients.text = "Ingredientes:\n${recipe.ingredients}"
+            preparationMode.text = "Modo de preparo:\n${recipe.prepMode}"
 
             itemView.setOnClickListener {
                 onClick(recipe)

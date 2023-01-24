@@ -41,7 +41,7 @@ class SecondFragmentViewModel : ViewModel() {
             FakeDB.addRecipe(
                 ModelParent(
                     type = radioButton.text.toString(),
-                    recipeInfo = FakeDB.createModel(
+                    recipeInfo = FakeDB.createRecipe(
                         Model(
                             title = name.text.toString(),
                             ingredients = ingredients.text.toString(),

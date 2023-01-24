@@ -29,14 +29,24 @@
             android:id="@+id/recipeIngredients"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="20dp"
+            android:paddingTop="10dp"
+            android:textSize="20sp"
+            android:maxLines="3"
+            android:lines="3"
+            android:ellipsize="end"
+            android:singleLine="false"
             tools:text="Ingredientes" />
 
         <TextView
             android:id="@+id/recipePrepMode"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="20dp"
+            android:paddingTop="10dp"
+            android:textSize="20sp"
+            android:maxLines="3"
+            android:lines="3"
+            android:ellipsize="end"
+            android:singleLine="false"
             android:text="Modo de preparação"/>
 
     </LinearLayout>
