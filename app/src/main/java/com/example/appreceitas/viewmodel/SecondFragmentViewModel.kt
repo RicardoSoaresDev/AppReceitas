@@ -1,5 +1,6 @@
 package com.example.appreceitas.viewmodel
 
+import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.RadioButton
@@ -14,6 +15,7 @@ import com.example.appreceitas.model.ModelParent
 class SecondFragmentViewModel : ViewModel() {
 
     fun isValidInput(
+        view: View,
         name: EditText,
         ingredients: EditText,
         preparationMode: EditText,
@@ -48,7 +50,6 @@ class SecondFragmentViewModel : ViewModel() {
                     )
                 )
             )
-//            findNavController().navigate(R.id.action_secondFragment_to_firstFragment)
         }
     }
 }

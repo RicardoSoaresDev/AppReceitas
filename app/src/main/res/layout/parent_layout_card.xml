@@ -7,7 +7,7 @@
     android:layout_margin="25dp"
     app:cardCornerRadius="20dp"
     app:cardElevation="8dp"
-    android:backgroundTint="@color/gray"
+    android:backgroundTint="@color/yellow"
     android:layout_gravity="center_horizontal"
     android:layout_marginRight="10dp"
     android:maxHeight="250dp">
@@ -16,7 +16,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:background="@color/gray"
+        android:background="@color/yellow"
         android:layout_gravity="center_horizontal"
         android:orientation="vertical">
 
