@@ -5,11 +5,13 @@ import android.view.LayoutInflater
 import androidx.fragment.app.Fragment
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.appreceitas.databinding.FragmentThirdBinding
 import com.example.appreceitas.db.FakeDB
 import com.example.appreceitas.view.adapter.ParentAdapterRecyclerView
+import com.example.appreceitas.viewmodel.ThirdFragmentViewModel
 
 
 class ThirdFragment : Fragment() {
@@ -17,7 +19,9 @@ class ThirdFragment : Fragment() {
     var list = FakeDB.dbObject
 
     private var _binding: FragmentThirdBinding? = null
-    val binding get() = _binding!!
+    private val binding get() = _binding!!
+
+    private lateinit var viewModel: ThirdFragmentViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -31,18 +35,12 @@ class ThirdFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val map = list.groupBy {
-            it.type
-        }.toList()
+        val idRecyclerView = binding.idRecyclerView
 
-        // initialize parent adapter
-        binding.idRecyclerView.apply {
-            adapter = ParentAdapterRecyclerView(map, onClick = {
-                val action = ThirdFragmentDirections.actionThirdFragmentToFourthFragment(it)
-                findNavController().navigate(action)
-            })
-            layoutManager = LinearLayoutManager(context)
-        }
+        viewModel = ViewModelProvider(this)[ThirdFragmentViewModel::class.java]
+
+        viewModel.initParentAdapter(list = this.list, idRecyclerView = idRecyclerView)
+        
     }
 
     override fun onDestroyView() {
@@ -51,3 +49,17 @@ class ThirdFragment : Fragment() {
     }
 
 }
+
+
+//        val map = list.groupBy {
+//            it.type
+//        }.toList()
+//
+//        // initialize parent adapter
+//        binding.idRecyclerView.apply {
+//            adapter = ParentAdapterRecyclerView(map, onClick = {
+//                val action = ThirdFragmentDirections.actionThirdFragmentToFourthFragment(it)
+//                findNavController().navigate(action)
+//            })
+//            layoutManager = LinearLayoutManager(context)
+//        }
