@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.appreceitas.db.FakeDB
 import com.example.appreceitas.model.ModelParent
 import com.example.appreceitas.view.adapter.ParentAdapterRecyclerView
 import com.example.appreceitas.view.ui.ThirdFragmentDirections
@@ -18,10 +19,18 @@ class ThirdFragmentViewModel: ViewModel() {
 
         // initialize parent adapter
         idRecyclerView.apply {
-            adapter = ParentAdapterRecyclerView(map, onClick = {
-                val action = ThirdFragmentDirections.actionThirdFragmentToFourthFragment(it)
-                findNavController().navigate(action)
-            })
+            adapter = ParentAdapterRecyclerView(
+                map,
+                onClick = {
+                    val action = ThirdFragmentDirections.actionThirdFragmentToFourthFragment(it)
+                    findNavController().navigate(action)
+                },
+                onClickDelete = {
+                    val deletedItem = FakeDB.dbObject.indexOf(it)
+                    FakeDB.deleteRecipe(it)
+                    adapter?.notifyItemRemoved(deletedItem)
+                }
+            )
             layoutManager = LinearLayoutManager(context)
         }
     }

@@ -2,15 +2,20 @@ package com.example.appreceitas.view.adapter
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.appreceitas.databinding.LayoutCardBinding
+import com.example.appreceitas.db.FakeDB
 import com.example.appreceitas.model.Model
 import com.example.appreceitas.model.ModelParent
 
 
-class ChildAdapterRecyclerView(private val recipes: List<ModelParent>,
-                               private val onClick: (Model) -> Unit) : RecyclerView.Adapter<ChildAdapterRecyclerView.ViewHolder>() {
+class ChildAdapterRecyclerView(
+    private val recipes: List<ModelParent>,
+    private val onClick: (Model) -> Unit,
+    private val onClickDelete: (Model) -> Unit
+) : RecyclerView.Adapter<ChildAdapterRecyclerView.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding = LayoutCardBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -20,8 +25,18 @@ class ChildAdapterRecyclerView(private val recipes: List<ModelParent>,
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val recipe = recipes[position]
         recipe.recipeInfo.forEach {
-            model ->  holder.bindView(model, onClick)
+            model ->  holder.bindView(model, onClick, onClickDelete)
         }
+
+//        when (holder) {
+//            is ViewHolder -> holder.delete.setOnClickListener {
+////                val removedItem = FakeDB.dbObject[position]
+//                FakeDB.dbObject.removeAt(position)
+//                notifyItemRemoved(position)
+//
+//            }
+//        }
+
     }
 
     override fun getItemCount(): Int {
@@ -34,15 +49,28 @@ class ChildAdapterRecyclerView(private val recipes: List<ModelParent>,
         val ingredients = binding.recipeIngredients
         val preparationMode = binding.recipePrepMode
 
+        val clickArea = binding.linearLayout
+
+        val edit = binding.editButton
+        val delete = binding.deleteButton
+
         @SuppressLint("SetTextI18n")
-        fun bindView(recipe: Model, onClick: (Model) -> Unit) {
+        fun bindView(
+            recipe: Model,
+            onClick: (Model) -> Unit,
+            onClickDelete: (Model) -> Unit
+        ) {
 
             title.text = recipe.title
             ingredients.text = "Ingredientes:\n${recipe.ingredients}"
             preparationMode.text = "Modo de preparo:\n${recipe.prepMode}"
 
-            itemView.setOnClickListener {
+            clickArea.setOnClickListener {
                 onClick(recipe)
+            }
+
+            delete.setOnClickListener {
+                onClickDelete(recipe)
             }
         }
     }

@@ -14,11 +14,11 @@ object FakeDB {
         return listOf(model)
     }
 
-    fun updateRecipe(recipe: ModelParent, position: Int) {
+//    fun updateRecipe(recipe: ModelParent, position: Int) {
+//
+//    }
 
-    }
-
-    fun deleteRecipe(recipe: ModelParent, position: Int) {
-//        dbObject.remove
+    fun deleteRecipe(recipe: ModelParent) {
+        dbObject.remove(recipe)
     }
 }

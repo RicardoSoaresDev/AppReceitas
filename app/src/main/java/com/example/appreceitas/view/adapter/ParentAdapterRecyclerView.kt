@@ -10,9 +10,9 @@ import com.example.appreceitas.model.ModelParent
 
 class ParentAdapterRecyclerView(
     var list: List<Pair<String, List<ModelParent>>>,
-    val onClick: (Model) -> Unit
-    ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-
+    val onClick: (Model) -> Unit,
+    val onClickDelete: (Model) -> Unit
+) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val binding = ParentLayoutCardBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -21,7 +21,7 @@ class ParentAdapterRecyclerView(
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when (holder) {
-            is ParentViewHolder -> holder.bind(list[position], onClick)
+            is ParentViewHolder -> holder.bind(list[position], onClick, onClickDelete)
         }
     }
 
@@ -36,12 +36,13 @@ class ParentAdapterRecyclerView(
 
         fun bind(
             modelParent: Pair<String, List<ModelParent>>,
-            onClick: (Model) -> Unit
+            onClick: (Model) -> Unit,
+            onClickDelete: (Model) -> Unit
         ) {
             section.text = modelParent.first
             recyclerView.apply {
                 layoutManager = LinearLayoutManager(context)
-                adapter = ChildAdapterRecyclerView(modelParent.second, onClick)
+                adapter = ChildAdapterRecyclerView(modelParent.second, onClick, onClickDelete)
             }
         }
     }
