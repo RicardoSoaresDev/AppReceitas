@@ -1,5 +1,6 @@
 package com.example.appreceitas.viewmodel
 
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -11,27 +12,11 @@ import com.example.appreceitas.view.ui.ThirdFragmentDirections
 
 class ThirdFragmentViewModel: ViewModel() {
 
-    fun initParentAdapter(list: MutableList<ModelParent>, idRecyclerView: RecyclerView) {
+    val groupedList = MutableLiveData<List<Pair<String, List<ModelParent>>>>()
 
-        val map = list.groupBy {
+    fun groupList() {
+        groupedList.value = FakeDB.dbObject.groupBy {
             it.type
         }.toList()
-
-        // initialize parent adapter
-        idRecyclerView.apply {
-            adapter = ParentAdapterRecyclerView(
-                map,
-                onClick = {
-                    val action = ThirdFragmentDirections.actionThirdFragmentToFourthFragment(it)
-                    findNavController().navigate(action)
-                },
-                onClickDelete = {
-                    val deletedItem = FakeDB.dbObject.indexOf(it)
-                    FakeDB.deleteRecipe(it)
-                    adapter?.notifyItemRemoved(deletedItem)
-                }
-            )
-            layoutManager = LinearLayoutManager(context)
-        }
     }
 }

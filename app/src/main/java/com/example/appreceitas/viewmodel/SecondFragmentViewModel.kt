@@ -35,7 +35,7 @@ class SecondFragmentViewModel : ViewModel() {
             !button3.isEnabled
         } else {
 
-            // passar a view nos parametros da função
+            // pass view in the function constructor
             val radioButton = view.findViewById<RadioButton>(radioGroup.checkedRadioButtonId)
 
             FakeDB.addRecipe(

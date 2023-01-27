@@ -27,16 +27,6 @@ class ChildAdapterRecyclerView(
         recipe.recipeInfo.forEach {
             model ->  holder.bindView(model, onClick, onClickDelete)
         }
-
-//        when (holder) {
-//            is ViewHolder -> holder.delete.setOnClickListener {
-////                val removedItem = FakeDB.dbObject[position]
-//                FakeDB.dbObject.removeAt(position)
-//                notifyItemRemoved(position)
-//
-//            }
-//        }
-
     }
 
     override fun getItemCount(): Int {
