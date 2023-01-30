@@ -14,7 +14,8 @@ import com.example.appreceitas.model.ModelParent
 class ChildAdapterRecyclerView(
     private val recipes: List<ModelParent>,
     private val onClick: (Model) -> Unit,
-    private val onClickDelete: (Model) -> Unit
+    private val onClickDelete: (Model) -> Unit,
+    private val onClickUpdate: (Model) -> Unit
 ) : RecyclerView.Adapter<ChildAdapterRecyclerView.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -25,7 +26,7 @@ class ChildAdapterRecyclerView(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val recipe = recipes[position]
         recipe.recipeInfo.forEach {
-            model ->  holder.bindView(model, onClick, onClickDelete)
+            model ->  holder.bindView(model, onClick, onClickDelete, onClickUpdate)
         }
     }
 
@@ -48,7 +49,8 @@ class ChildAdapterRecyclerView(
         fun bindView(
             recipe: Model,
             onClick: (Model) -> Unit,
-            onClickDelete: (Model) -> Unit
+            onClickDelete: (Model) -> Unit,
+            onClickUpdate: (Model) -> Unit
         ) {
 
             title.text = recipe.title
@@ -61,6 +63,10 @@ class ChildAdapterRecyclerView(
 
             delete.setOnClickListener {
                 onClickDelete(recipe)
+            }
+
+            edit.setOnClickListener {
+                onClickUpdate(recipe)
             }
         }
     }

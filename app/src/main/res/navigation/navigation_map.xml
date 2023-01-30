@@ -37,6 +37,9 @@
         <action
             android:id="@+id/action_thirdFragment_to_firstFragment"
             app:destination="@id/firstFragment" />
+        <action
+            android:id="@+id/action_thirdFragment_to_fifthFragment"
+            app:destination="@id/fifthFragment" />
     </fragment>
     <fragment
         android:id="@+id/fourthFragment"
@@ -48,6 +51,18 @@
             app:destination="@id/thirdFragment" />
         <argument
             android:name="recipe"
+            app:argType="com.example.appreceitas.model.Model" />
+    </fragment>
+    <fragment
+        android:id="@+id/fifthFragment"
+        android:name="com.example.appreceitas.FifthFragment"
+        android:label="fragment_fifth"
+        tools:layout="@layout/fragment_fifth" >
+        <action
+            android:id="@+id/action_fifthFragment_to_thirdFragment"
+            app:destination="@id/thirdFragment" />
+        <argument
+            android:name="recipeUpdate"
             app:argType="com.example.appreceitas.model.Model" />
     </fragment>
 </navigation>

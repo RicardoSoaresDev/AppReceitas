@@ -10,7 +10,8 @@ import com.example.appreceitas.model.ModelParent
 
 class ParentAdapterRecyclerView(
     val onClick: (Model) -> Unit,
-    val onClickDelete: (Model) -> Unit
+    val onClickDelete: (Model) -> Unit,
+    val onClickUpdate: (Model) -> Unit
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private var list: List<Pair<String, List<ModelParent>>> = listOf()
@@ -22,7 +23,7 @@ class ParentAdapterRecyclerView(
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when (holder) {
-            is ParentViewHolder -> holder.bind(list[position], onClick, onClickDelete)
+            is ParentViewHolder -> holder.bind(list[position], onClick, onClickDelete, onClickUpdate)
         }
     }
 
@@ -43,12 +44,13 @@ class ParentAdapterRecyclerView(
         fun bind(
             modelParent: Pair<String, List<ModelParent>>,
             onClick: (Model) -> Unit,
-            onClickDelete: (Model) -> Unit
+            onClickDelete: (Model) -> Unit,
+            onClickUpdate: (Model) -> Unit
         ) {
             section.text = modelParent.first
             recyclerView.apply {
                 layoutManager = LinearLayoutManager(context)
-                adapter = ChildAdapterRecyclerView(modelParent.second, onClick, onClickDelete)
+                adapter = ChildAdapterRecyclerView(modelParent.second, onClick, onClickDelete, onClickUpdate)
             }
         }
     }

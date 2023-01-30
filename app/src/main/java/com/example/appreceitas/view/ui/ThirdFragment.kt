@@ -5,10 +5,12 @@ import android.view.LayoutInflater
 import androidx.fragment.app.Fragment
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.appreceitas.R
 import com.example.appreceitas.databinding.FragmentThirdBinding
 import com.example.appreceitas.db.FakeDB
 import com.example.appreceitas.view.adapter.ParentAdapterRecyclerView
@@ -51,6 +53,12 @@ class ThirdFragment : Fragment() {
                 modelParent -> FakeDB.deleteRecipe(modelParent)
             }
                 viewModel.groupList()
+            },
+            onClickUpdate = {
+
+                val actionUpdate = ThirdFragmentDirections.actionThirdFragmentToFifthFragment(it)
+                findNavController().navigate(actionUpdate)
+
             }
         )
 

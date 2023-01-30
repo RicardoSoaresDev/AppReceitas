@@ -14,9 +14,12 @@ object FakeDB {
         return listOf(model)
     }
 
-//    fun updateRecipe(recipe: ModelParent, position: Int) {
-//
-//    }
+    fun updateRecipe(recipe: ModelParent, updatedRecipe: ModelParent) {
+        recipe.type = updatedRecipe.type
+        recipe.recipeInfo[0].title = updatedRecipe.recipeInfo[0].title
+        recipe.recipeInfo[0].ingredients = updatedRecipe.recipeInfo[0].ingredients
+        recipe.recipeInfo[0].prepMode = updatedRecipe.recipeInfo[0].prepMode
+    }
 
     fun deleteRecipe(recipe: ModelParent) {
         dbObject.remove(recipe)
