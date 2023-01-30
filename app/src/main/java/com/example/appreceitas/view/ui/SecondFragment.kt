@@ -5,15 +5,11 @@ import android.view.LayoutInflater
 import androidx.fragment.app.Fragment
 import android.view.View
 import android.view.ViewGroup
-import android.widget.RadioButton
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.get
 import androidx.navigation.fragment.findNavController
 import com.example.appreceitas.R
 import com.example.appreceitas.databinding.FragmentSecondBinding
 import com.example.appreceitas.db.FakeDB
-import com.example.appreceitas.model.Model
-import com.example.appreceitas.model.ModelParent
 import com.example.appreceitas.viewmodel.SecondFragmentViewModel
 
 class SecondFragment : Fragment() {
@@ -45,7 +41,6 @@ class SecondFragment : Fragment() {
 
         button3.setOnClickListener {
 
-            // view model
             viewModel = ViewModelProvider(this)[SecondFragmentViewModel::class.java]
 
             viewModel.isValidInput(view, name, ingredients, preparationMode, radioGroup, button3)

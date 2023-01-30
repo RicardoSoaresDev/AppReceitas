@@ -2,11 +2,9 @@ package com.example.appreceitas.view.adapter
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.appreceitas.databinding.LayoutCardBinding
-import com.example.appreceitas.db.FakeDB
 import com.example.appreceitas.model.Model
 import com.example.appreceitas.model.ModelParent
 
@@ -36,14 +34,14 @@ class ChildAdapterRecyclerView(
 
     class ViewHolder(binding: LayoutCardBinding) : RecyclerView.ViewHolder(binding.root) {
 
-        val title = binding.recipeTitle
-        val ingredients = binding.recipeIngredients
-        val preparationMode = binding.recipePrepMode
+        private val title = binding.recipeTitle
+        private val ingredients = binding.recipeIngredients
+        private val preparationMode = binding.recipePrepMode
 
-        val clickArea = binding.linearLayout
+        private val clickArea = binding.linearLayout
 
-        val edit = binding.editButton
-        val delete = binding.deleteButton
+        private val edit = binding.editButton
+        private val delete = binding.deleteButton
 
         @SuppressLint("SetTextI18n")
         fun bindView(

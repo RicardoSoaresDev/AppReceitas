@@ -55,7 +55,7 @@
     </fragment>
     <fragment
         android:id="@+id/fifthFragment"
-        android:name="com.example.appreceitas.FifthFragment"
+        android:name="com.example.appreceitas.view.ui.FifthFragment"
         android:label="fragment_fifth"
         tools:layout="@layout/fragment_fifth" >
         <action

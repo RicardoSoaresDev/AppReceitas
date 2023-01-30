@@ -13,7 +13,7 @@ class FourthFragment : Fragment() {
     private val args: FourthFragmentArgs by navArgs()
 
     private var _binding: FragmentFourthBinding? = null
-    val binding get() = _binding!!
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater,

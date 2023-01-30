@@ -9,9 +9,9 @@ import com.example.appreceitas.model.Model
 import com.example.appreceitas.model.ModelParent
 
 class ParentAdapterRecyclerView(
-    val onClick: (Model) -> Unit,
-    val onClickDelete: (Model) -> Unit,
-    val onClickUpdate: (Model) -> Unit
+    private val onClick: (Model) -> Unit,
+    private val onClickDelete: (Model) -> Unit,
+    private val onClickUpdate: (Model) -> Unit
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private var list: List<Pair<String, List<ModelParent>>> = listOf()

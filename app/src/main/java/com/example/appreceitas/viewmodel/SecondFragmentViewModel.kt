@@ -6,8 +6,6 @@ import android.widget.EditText
 import android.widget.RadioButton
 import android.widget.RadioGroup
 import androidx.lifecycle.ViewModel
-import androidx.navigation.fragment.findNavController
-import com.example.appreceitas.R
 import com.example.appreceitas.db.FakeDB
 import com.example.appreceitas.model.Model
 import com.example.appreceitas.model.ModelParent
