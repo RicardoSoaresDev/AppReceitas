@@ -17,16 +17,17 @@ class FifthFragmentViewModel: ViewModel() {
 
     private fun checkList(title: EditText): Boolean {
         var status = false
+
         FakeDB.dbObject.forEach { modelParent ->
             modelParent.recipeInfo.forEach { model ->
                 if (model.title == title.text.toString()) {
                     status = true
+
                 }
             }
         }
         return status
     }
-
     fun isValidUpdate(
         view: View,
         args: FifthFragmentArgs,
@@ -52,10 +53,10 @@ class FifthFragmentViewModel: ViewModel() {
             !updateButton.isEnabled
         } else {
 
-            statusUpdate = true
-
             val radioButton =
                 view.findViewById<RadioButton>(updateRadioGroup.checkedRadioButtonId)
+
+            statusUpdate = true
 
             val updateRecipe = ModelParent(
                 type = radioButton.text.toString(),

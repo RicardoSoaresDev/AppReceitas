@@ -5,9 +5,11 @@ import android.view.LayoutInflater
 import androidx.fragment.app.Fragment
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.appreceitas.R
 import com.example.appreceitas.databinding.FragmentThirdBinding
 import com.example.appreceitas.db.FakeDB
 import com.example.appreceitas.view.adapter.ParentAdapterRecyclerView
@@ -34,6 +36,13 @@ class ThirdFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val fab = binding.floatingActionButton
+
+        fab.setOnClickListener{
+            findNavController().navigate(R.id.action_thirdFragment_to_secondFragment)
+        }
+
 
         viewModel = ViewModelProvider(this)[ThirdFragmentViewModel::class.java]
 

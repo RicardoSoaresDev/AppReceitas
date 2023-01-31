@@ -46,7 +46,7 @@ class SecondFragment : Fragment() {
             viewModel.isValidInput(view, name, ingredients, preparationMode, radioGroup, button3)
 
             if (viewModel.statusCreate) {
-                findNavController().navigate(R.id.action_secondFragment_to_firstFragment)
+                findNavController().navigate(R.id.action_secondFragment_to_thirdFragment)
             }
 
 //            if (dbSizeBefore < FakeDB.dbObject.size) {
