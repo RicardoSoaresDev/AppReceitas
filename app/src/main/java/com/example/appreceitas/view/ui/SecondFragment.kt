@@ -37,7 +37,7 @@ class SecondFragment : Fragment() {
         val radioGroup = binding.radioGroup
         val button3 = binding.button3
 
-        val dbSizeBefore = FakeDB.dbObject.size
+//        val dbSizeBefore = FakeDB.dbObject.size
 
         button3.setOnClickListener {
 
@@ -45,9 +45,13 @@ class SecondFragment : Fragment() {
 
             viewModel.isValidInput(view, name, ingredients, preparationMode, radioGroup, button3)
 
-            if (dbSizeBefore < FakeDB.dbObject.size) {
+            if (viewModel.statusCreate) {
                 findNavController().navigate(R.id.action_secondFragment_to_firstFragment)
             }
+
+//            if (dbSizeBefore < FakeDB.dbObject.size) {
+//                findNavController().navigate(R.id.action_secondFragment_to_firstFragment)
+//            }
         }
     }
 

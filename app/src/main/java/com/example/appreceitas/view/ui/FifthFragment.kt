@@ -52,8 +52,9 @@ class FifthFragment : Fragment() {
 
             viewModel.isValidUpdate(view, args, title, ingredients, prepMode, updateRadioGroup, updateButton)
 
-            findNavController().navigate(R.id.action_fifthFragment_to_thirdFragment)
-
+            if (viewModel.statusUpdate) {
+                findNavController().navigate(R.id.action_fifthFragment_to_thirdFragment)
+            }
         }
     }
 

@@ -13,6 +13,20 @@ import com.example.appreceitas.view.ui.FifthFragmentArgs
 
 class FifthFragmentViewModel: ViewModel() {
 
+    var statusUpdate = false
+
+    private fun checkList(title: EditText): Boolean {
+        var status = false
+        FakeDB.dbObject.forEach { modelParent ->
+            modelParent.recipeInfo.forEach { model ->
+                if (model.title == title.text.toString()) {
+                    status = true
+                }
+            }
+        }
+        return status
+    }
+
     fun isValidUpdate(
         view: View,
         args: FifthFragmentArgs,
@@ -25,6 +39,9 @@ class FifthFragmentViewModel: ViewModel() {
         if (title.text.toString().isEmpty()) {
             title.setError("Este campo não pode ficar vazio.")
             !updateButton.isEnabled
+        } else if (checkList(title)) {
+            title.setError("Já existe uma receita com esse título.")
+            !updateButton.isEnabled
         } else if (ingredients.text.toString().isEmpty()) {
             ingredients.setError("Este campo não pode ficar vazio.")
             !updateButton.isEnabled
@@ -34,6 +51,8 @@ class FifthFragmentViewModel: ViewModel() {
         } else if (updateRadioGroup.checkedRadioButtonId == -1) {
             !updateButton.isEnabled
         } else {
+
+            statusUpdate = true
 
             val radioButton =
                 view.findViewById<RadioButton>(updateRadioGroup.checkedRadioButtonId)
